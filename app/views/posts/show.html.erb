@@ -1,0 +1,37 @@
+<div>
+  <p><%= @post.url %></p>
+  <br/>
+  <p>"<%= @post.description %>"</p>
+  <br/>
+  <p>
+    <small>
+      <em><%= @post.creator.username %> created this post on
+                <%= @post.created_at %>
+      </em>
+    </small>
+  </p>
+  <br/>
+</div>
+<% if logged_in? %>
+  <%= render 'shared/error', obj: @comment %>
+
+  <%= form_for [@post, @comment] do |f| %>
+    <%= f.text_area :body %>
+    <br/>
+    <%= f.submit "Create Comment" %>
+  <% end %>
+<% end %>
+
+<h4>Comments:</h4>
+<ol>
+  <% @post.comments.each do |comment| %>
+    <li>
+      (<%= link_to '+', vote_post_comment_path(comment, vote: true), method: 'post' %>
+      <%= comment.total_votes %>
+      <%= link_to '-', vote_post_comment_path(comment, vote: false), method: 'post' %> )
+      <%= comment.body %> <small><em>by <%= comment.creator.username %></em></small>
+   </li>
+  <% end %>
+</ol>
+
+
