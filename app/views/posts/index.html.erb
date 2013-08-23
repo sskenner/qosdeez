@@ -3,9 +3,14 @@
 <ul>
   <% @posts.each do |post| %>
     <li>
-      (<%= link_to '+', vote_post_path(post, vote: true), method: 'post' %>
-      <%= post.total_votes %>
-      <%= link_to '-', vote_post_path(post, vote: false), method: 'post' %> )
+      <% if current_user %>
+        (<%= link_to '+', vote_post_path(post, vote: true), method: 'post' %>
+      <% end %>
+        <%= post.total_votes %>
+      <% if current_user %>
+        <%= link_to '-', vote_post_path(post, vote: false), method: 'post' %> )
+      <% end %>
+
       <%= link_to post.title, post %>
       <small>posted at <%= post.created_at %></small>
       |

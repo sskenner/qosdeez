@@ -43,9 +43,20 @@ class PostsController < ApplicationController
   end
 
   def vote
-    Vote.create(voteable: @post, creator: current_user, vote: params[:vote])
-    flash[:notice] = "Your vote was counted."
-    redirect_to posts_path
+    if logged_in?
+      @post.votes.each do |vote|
+        if vote.creator == current_user
+          flash[:error] = 'You already voted!'
+          redirect_to posts_path
+          return
+        end
+      end
+      Vote.create(voteable: @post, creator: current_user, vote: params[:vote])
+      flash[:notice] = "Your vote was counted."
+      redirect_to posts_path
+    else
+      access_denied
+    end
   end
 
   private
