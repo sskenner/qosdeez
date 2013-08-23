@@ -9,7 +9,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params  )
+    @post = Post.new(post_params)
     @post.creator = current_user
 
 

@@ -26,11 +26,11 @@
 <ol>
   <% @post.comments.each do |comment| %>
     <li>
-      (<%= link_to '+', vote_post_comment_path(comment, vote: true), method: 'post' %>
+      (<%= link_to '+', vote_post_comment_path(comment, comment.post, vote: true), method: 'post' %>
       <%= comment.total_votes %>
-      <%= link_to '-', vote_post_comment_path(comment, vote: false), method: 'post' %> )
+      <%= link_to '-', vote_post_comment_path(comment, @post, vote: false), method: 'post' %>)
       <%= comment.body %> <small><em>by <%= comment.creator.username %></em></small>
-   </li>
+    </li>
   <% end %>
 </ol>
 

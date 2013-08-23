@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
     @comment.post = @post
     @comment.creator = current_user
 
+
     if @comment.save
       flash[:notice] = "Your comment was added."
       redirect_to post_path(@post)
@@ -16,6 +17,7 @@ class CommentsController < ApplicationController
   end
 
   def vote
+    @comment = Comment.find(params[:id])
     Vote.create(voteable: @comment, creator: current_user, vote: params[:vote])
     flash[:notice] = "Your vote was counted."
     redirect_to post_path
