@@ -1,3 +1,6 @@
 <h5>New Category</h5>
 <hr>
-<%= render 'layouts/categoriesform' %>
+
+<%= render 'shared/error', obj: @category %>
+
+<%= render 'layouts/categoriesform', obj: @category %>

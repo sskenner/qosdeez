@@ -11,7 +11,7 @@ class CategoriesController < ApplicationController
       flash[:notice] = "You created a new category!"
       redirect_to posts_path
     else
-      render '/posts'
+      render :new
     end
   end
 
