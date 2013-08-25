@@ -1,5 +1,5 @@
 <div>
-  <p><%= @post.url %></p>
+  <p><%= link_to @post.url, fix_url(@post.url) %></p>
   <br/>
   <p>"<%= @post.description %>"</p>
   <br/>
