@@ -1,4 +1,4 @@
-<h3><%= link_to 'All Posts', posts_path %> <em> > <%= @category.name %></em></h3>
+<h3><%= link_to 'All Posts', posts_path %> <strong>»</strong> <em><%= @category.name %></em></h3>
 <hr>
 <ul style='list-style: none' >
   <% @category.posts.each do |post| %>
