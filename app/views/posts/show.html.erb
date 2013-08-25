@@ -13,17 +13,17 @@
   </p>
   <br/>
 </div>
-<div class='post_box'>
-  <% if logged_in? %>
-    <%= render 'shared/error', obj: @comment %>
+<% if logged_in? %>
+  <div class='post_box'>
+      <%= render 'shared/error', obj: @comment %>
 
-    <%= form_for [@post, @comment] do |f| %>
-      <%= f.text_area :body %>
-      <br/>
-      <%= f.submit "Create Comment", class: 'btn btn-primary' %>
-    <% end %>
-  <% end %>
-</div>
+      <%= form_for [@post, @comment] do |f| %>
+        <%= f.text_area :body %>
+        <br/>
+        <%= f.submit "Create Comment", class: 'btn btn-primary' %>
+      <% end %>
+  </div>
+<% end %>
 
 <h4 style="float: left; width: 100%">Comments:</h4>
 <ul style="list-style: none; margin: 0px; padding: 0px" >
