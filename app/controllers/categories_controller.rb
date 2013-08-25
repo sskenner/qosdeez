@@ -16,6 +16,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @category = Category.find_by(params[:category_id])
+    # binding.pry
+    @category = Category.find(params[:id])
   end
 end
