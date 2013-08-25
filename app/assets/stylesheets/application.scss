@@ -15,7 +15,7 @@
  @import "bootstrap";
 
  .container {
-  margin-left: 135px
+  margin-left: 135px;
 }
 
 .navbar .nav > li > a.brand {
@@ -76,5 +76,14 @@ div.comment {
 }
 
 .post {
+  float: left;
+}
+
+.comments_header {
+  background-color: lightgrey;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px;
+  width: 600px;
   float: left;
 }

@@ -1,5 +1,6 @@
-<div>
-  <p><%= link_to @post.url, fix_url(@post.url) %></p>
+<h4 style="float: left; width: 100%"><%= @post.title %></h4>
+<div class='post_box'>
+  <h4><%= link_to @post.url, fix_url(@post.url) %></h4>
   <br/>
   <p>"<%= @post.description %>"</p>
   <br/>
@@ -12,31 +13,35 @@
   </p>
   <br/>
 </div>
-<% if logged_in? %>
-  <%= render 'shared/error', obj: @comment %>
+<div class='post_box'>
+  <% if logged_in? %>
+    <%= render 'shared/error', obj: @comment %>
 
-  <%= form_for [@post, @comment] do |f| %>
-    <%= f.text_area :body %>
-    <br/>
-    <%= f.submit "Create Comment" %>
+    <%= form_for [@post, @comment] do |f| %>
+      <%= f.text_area :body %>
+      <br/>
+      <%= f.submit "Create Comment", class: 'btn btn-primary' %>
+    <% end %>
   <% end %>
-<% end %>
+</div>
 
-<h4>Comments:</h4>
-<ul>
+<h4 style="float: left; width: 100%">Comments:</h4>
+<ul style="list-style: none; margin: 0px; padding: 0px" >
   <% @post.comments.each do |comment| %>
     <li>
-      <% if current_user %>
-        (<%= link_to '+', vote_post_comment_path(comment.post, comment.id, vote: true), method: 'post' %>
-      <% end %>
-      <small><em><%= comment.total_votes %> total votes</em></small>
-      <% if current_user %>
-      <%= link_to '-', vote_post_comment_path(comment.post, comment, vote: false), method: 'post' %>
-      )
-      <% end %>
-      <%= comment.body %> <small><em>by <%= comment.creator.username %></em></small>
+      <div>
+        <div class='vote_box'>
+          <%= link_to "<i class=\"icon-arrow-up\"></i>".html_safe, vote_post_comment_path(comment.post, comment.id, vote: true), method: 'post', class: 'btn btn-success nav-item' %>
+          <div class='btn btn-mini nav-item'>
+            <%= comment.total_votes %><br/>Vote Meter
+          </div>
+          <%= link_to "<i class=\"icon-arrow-down\"></i>".html_safe, vote_post_comment_path(comment.post, comment, vote: false), method: 'post', class: 'btn btn-warning nav-item' %>
+        </div>
+        <div  class='post_box'>
+          <%= comment.body %><br/><small><em>by <%= comment.creator.username %></em></small>
+        </div>
+      </div>
     </li>
   <% end %>
 </ul>
-
 

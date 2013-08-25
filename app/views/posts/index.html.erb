@@ -3,7 +3,7 @@
 <ul style='list-style: none' >
   <% @posts.each do |post| %>
     <li>
-      <div class="post">
+      <div>
         <div class='vote_box'>
           <%= link_to "<i class=\"icon-arrow-up\"></i>".html_safe, vote_post_path(post, vote: true), method: 'post', class: 'btn btn-success nav-item' %>
           <div class='btn btn-mini nav-item'>
