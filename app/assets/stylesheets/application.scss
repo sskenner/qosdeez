@@ -51,3 +51,30 @@ div.comment {
   margin-top: 5px;
   width: 500px;
 }
+
+#post_info {
+  background-color: lightgrey;
+
+}
+
+.vote_box {
+  background-color: lightgrey;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px;
+  width: 156px;
+  float: left;
+}
+
+.post_box {
+  background-color: lightgrey;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px;
+  width: 600px;
+  float: left;
+}
+
+.post {
+  float: left;
+}

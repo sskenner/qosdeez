@@ -11,4 +11,12 @@ class Post < ActiveRecord::Base
   def total_votes
     self.votes.where(vote: true).size - self.votes.where(vote: false).size
   end
+
+  def true_votes
+    self.votes.where(vote: true).size
+  end
+
+  def false_votes
+    self.votes.where(vote: false).size
+  end
 end
