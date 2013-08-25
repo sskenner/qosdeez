@@ -8,5 +8,14 @@
   <%= f.label :description %>
   <%= f.text_area :description %>
   <br/>
+  <ul style="list-style: none; margin: 0px;">
+    <% @categories.each do |c| %>
+      <li>
+        <%= f.label c.name %>
+        <%= f.check_box :categories %>
+      </li>
+    <% end %>
+  </ul>
+  <br/>
   <%= f.submit button_name %>
 <% end %>

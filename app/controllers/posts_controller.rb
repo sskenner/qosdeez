@@ -12,7 +12,6 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.creator = current_user
 
-
     if @post.save
       flash[:notice] = "You created a new post!"
       redirect_to posts_path
@@ -24,6 +23,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @categories = Category.all
   end
 
   def edit

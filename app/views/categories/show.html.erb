@@ -1,7 +1,7 @@
-<h3>All Posts</h3>
+<h3><%= link_to 'All Posts', posts_path %> <em> > <%= @category.name %></em></h3>
 <hr>
 <ul style='list-style: none' >
-  <% @posts.each do |post| %>
+  <% @category.posts.each do |post| %>
     <li>
       <div>
         <div class='vote_box'>
