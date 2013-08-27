@@ -5,12 +5,24 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
-    categories
+
+    respond_to do |format|
+
+      format.html do
+      end
+
+      format.js do
+        render :index
+      end
+
+    end
   end
 
   def create
+
     @post = Post.new(post_params)
     @post.creator = current_user
+
 
     if @post.save
       flash[:notice] = "You created a new post!"
@@ -23,10 +35,12 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @categories = Category.all
   end
 
   def edit
+    if @post.creator != current_user
+      flash[:error] = "You can't edit another person's post!"
+    end
   end
 
   def show
@@ -43,19 +57,38 @@ class PostsController < ApplicationController
   end
 
   def vote
-    if logged_in?
-      @post.votes.each do |vote|
-        if vote.creator == current_user
-          flash[:error] = 'You already voted!'
-          redirect_to posts_path
+
+    @post.votes.each do |vote|
+      if vote.creator == current_user
+        @voted = true
+
+        respond_to do |format|
+
+          format.html do
+            flash[:error] = 'You already voted!'
+            redirect_to posts_path
+          end
+
+          format.js do
+            render :vote
+          end
+
           return
         end
       end
-      Vote.create(voteable: @post, creator: current_user, vote: params[:vote])
-      flash[:notice] = "Your vote was counted."
-      redirect_to posts_path
-    else
-      access_denied
+    end
+
+    Vote.create(voteable: @post, creator: current_user, vote: params[:vote])
+
+    respond_to do |format|
+
+      format.html do
+        flash[:notice] = "Your vote was counted."
+        redirect_to posts_path
+      end
+
+      format.js
+
     end
   end
 

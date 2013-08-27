@@ -37,11 +37,11 @@
     <li>
       <div>
         <div class='vote_box'>
-          <%= link_to "<i class=\"icon-arrow-up\"></i>".html_safe, vote_post_comment_path(comment.post, comment.id, vote: true), method: 'post', class: 'btn btn-success nav-item' %>
+          <%= link_to "<i class=\"icon-arrow-up\"></i>".html_safe, vote_post_comment_path(comment.post, comment.id, vote: true), method: 'post', remote: true, class: 'btn btn-success nav-item' %>
           <div class='btn btn-mini nav-item'>
-            <%= comment.total_votes %><br/>Vote Meter
+            <span id="comment_<%= comment.id %>_votes"><%= comment.total_votes %></span><br/>Vote Meter
           </div>
-          <%= link_to "<i class=\"icon-arrow-down\"></i>".html_safe, vote_post_comment_path(comment.post, comment, vote: false), method: 'post', class: 'btn btn-warning nav-item' %>
+          <%= link_to "<i class=\"icon-arrow-down\"></i>".html_safe, vote_post_comment_path(comment.post, comment, vote: false), method: 'post', remote: true, class: 'btn btn-warning nav-item' %>
         </div>
         <div  class='post_box'>
           <%= comment.body %><br/><small><em>by <%= comment.creator.username %></em></small>

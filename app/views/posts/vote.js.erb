@@ -1,0 +1,6 @@
+<% if @voted %>
+  alert("You already voted!");
+<% else %>
+  $("#post_<%= @post.id %>_votes").html("<%= @post.total_votes %>");
+  alert("Your vote was counted!");
+<% end %>
