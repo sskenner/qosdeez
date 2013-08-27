@@ -59,7 +59,7 @@ div.comment {
 
 .vote_box {
   background-color: lightgrey;
-  padding: 10px;
+  padding: 5px;
   border-radius: 5px;
   margin: 10px;
   width: 156px;
@@ -72,6 +72,15 @@ div.comment {
   border-radius: 5px;
   margin: 10px;
   width: 600px;
+  float: left;
+}
+
+.comment_box {
+  background-color: lightgrey;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px;
+  width: 510px;
   float: left;
 }
 

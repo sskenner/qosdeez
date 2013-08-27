@@ -12,7 +12,7 @@
           <%= link_to "<i class=\"icon-arrow-down\"></i>".html_safe, vote_post_path(post, vote: false), method: 'post', remote: true, class: 'btn btn-warning nav-item' %>
         </div>
         <div class='post_box'>
-          <h4 stlye="text-align: right"><%= link_to post.title, post %></h4>
+          <h4 stlye="text-align: right"><%= link_to post.title, post_path(post) %></h4>
           <small>posted at <%= post.created_at %></small>
           |
           <small><%= link_to 'Edit', edit_post_path(post) %></small>

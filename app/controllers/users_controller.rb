@@ -14,6 +14,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+  end
+
+  def show
+
+    @user = User.find_by(slug: params[:id])
+  end
+
   private
   def users_params
     params.require(:user).permit(:username, :password)

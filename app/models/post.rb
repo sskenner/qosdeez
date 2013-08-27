@@ -8,15 +8,34 @@ class Post < ActiveRecord::Base
 
   validates :title, presence: true
 
+  after_validation :generate_slug
+
   def total_votes
     self.votes.where(vote: true).size - self.votes.where(vote: false).size
   end
 
-  def true_votes
-    self.votes.where(vote: true).size
+  def generate_slug
+    self.slug = self.title.gsub(" ", "-").downcase
+    @posts = Post.all
+
+    @posts.each do |post|
+      if self.slug == post.slug
+        post = post.slug.chars
+        last = post.pop
+        if last.to_i == 0
+          self.slug += "-1"
+        else
+          last = last.to_i + 1
+          self.slug = self.slug.chars
+          self.slug.pop
+          self.slug = self.slug.join
+          self.slug += "#{last}"
+        end
+      end
+    end
   end
 
-  def false_votes
-    self.votes.where(vote: false).size
+  def to_param
+    self.slug
   end
 end
