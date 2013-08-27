@@ -13,7 +13,7 @@
         </div>
         <div class='post_box'>
           <h4 stlye="text-align: right"><%= link_to post.title, post_path(post) %></h4>
-          <small>posted at <%= post.created_at %></small>
+          <small><%= link_to post.creator.username, user_path(post.creator) %> posted this on <%= display_date(post.created_at) %></small>
           |
           <small><%= link_to 'Edit', edit_post_path(post) %></small>
         </div>

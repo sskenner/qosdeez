@@ -8,4 +8,8 @@ module ApplicationHelper
   def fix_url(url)
     url.starts_with?("http://") ? url : "http://#{url}"
   end
+
+  def display_date(date)
+    date.strftime('%B %d, %Y at %I:%M %p')
+  end
 end
