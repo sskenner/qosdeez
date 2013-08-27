@@ -30,14 +30,13 @@ class CommentsController < ApplicationController
           format.html do
             flash[:error] = "You already voted!"
             redirect_to post_path(@comment.post)
-            return
           end
 
           format.js do
             render :vote
-            return
           end
 
+          return
         end
       end
     end
