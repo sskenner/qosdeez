@@ -1,9 +1,9 @@
 <h3 style="float: left; width: 100%"><%= @post.title %></h3>
 <hr>
 <div class='post_box'>
-  <ul style="line-style: none;">
+  <ul style="line-style: none">
     <% @post.categories.each do |category| %>
-      <span class='badge'><%= link_to category.name, category %></span>
+      <span class='label'><%= link_to category.name, category_path(category) %> </span>
     <% end %>
   </ul>
   <h4><%= link_to @post.url, fix_url(@post.url) %></h4>

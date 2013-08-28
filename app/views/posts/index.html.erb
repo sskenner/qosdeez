@@ -12,6 +12,11 @@
           <%= link_to "<i class=\"icon-arrow-down\"></i>".html_safe, vote_post_path(post, vote: false), method: 'post', remote: true, class: 'btn btn-warning nav-item' %>
         </div>
         <div class='post_box'>
+          <ul style="line-style: none">
+            <% post.categories.each do |category| %>
+              <span class='label'><%= link_to category.name, category_path(category) %></span>
+            <% end %>
+          </ul>
           <h4 stlye="text-align: right"><%= link_to post.title, post_path(post) %></h4>
           <small><%= link_to post.creator.username, user_path(post.creator) %> posted this on <%= display_date(post.created_at) %></small>
           |

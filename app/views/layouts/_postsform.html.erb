@@ -8,5 +8,9 @@
   <%= f.label :description %>
   <%= f.text_area :description %>
   <br/>
+  <%= f.label :categories %>
+  <%= f.select :categories, Category.all.collect {|x| [x.name, x.id]}, {}, multiple: true %>
+  <br/>
+  <br/>
   <%= f.submit button_name %>
 <% end %>

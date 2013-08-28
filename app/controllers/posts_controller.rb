@@ -19,12 +19,19 @@ class PostsController < ApplicationController
   end
 
   def create
-
     @post = Post.new(post_params)
     @post.creator = current_user
 
 
     if @post.save
+      params[:post][:categories].each do |categories|
+      categories = Label.new(:category_id => categories, :post_id => @post.id)
+      if categories.valid?
+        categories.save
+      else
+        @errors += categories.errors
+      end
+    end
       flash[:notice] = "You created a new post!"
       redirect_to posts_path
     else
