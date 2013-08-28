@@ -25,13 +25,10 @@ class PostsController < ApplicationController
 
     if @post.save
       params[:post][:categories].each do |categories|
-      categories = Label.new(:category_id => categories, :post_id => @post.id)
-      if categories.valid?
-        categories.save
-      else
-        @errors += categories.errors
+        if categories != ""
+          categories = Label.create(:category_id => categories, :post_id => @post.id)
+        end
       end
-    end
       flash[:notice] = "You created a new post!"
       redirect_to posts_path
     else
@@ -53,6 +50,11 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
+      params[:post][:categories].each do |categories|
+        if categories != ""
+          categories = Label.create(:category_id => categories, :post_id => @post.id)
+        end
+      end
       flash[:notice] = "You've updated the post!"
       redirect_to posts_path
     else
