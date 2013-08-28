@@ -1,4 +1,4 @@
-<h3>Register</h3>
+<h3>Edit</h3>
 <hr>
 <%= render 'shared/error', obj: @user %>
 <%= form_for @user do |f| %>
@@ -14,5 +14,5 @@
   <%= f.label :time_zone %>
   <%= f.time_zone_select :time_zone, ActiveSupport::TimeZone.us_zones %>
   <br/>
-  <%= f.submit 'Register', class: 'btn btn-primary' %>
+  <%= f.submit 'Edit User Profile', class: 'btn btn-primary' %>
 <% end %>
