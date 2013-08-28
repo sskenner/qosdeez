@@ -10,6 +10,9 @@ module ApplicationHelper
   end
 
   def display_date(date)
-    date.strftime('%B %d, %Y at %I:%M %p')
+    if logged_in?
+      date = date.in_time_zone(current_user.time_zone)
+    end
+    date.strftime('%B %d, %Y at %I:%M %p %Z')
   end
 end
