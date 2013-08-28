@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:edit, :show, :update, :vote]
   before_action :require_user, only: [:new, :create, :edit, :update, :vote]
-  before_action :require_creator, only: [:edit, :update]
+  before_action :require_creator_or_admin, only: [:edit, :update]
 
   def index
     @posts = Post.all
@@ -38,9 +38,6 @@ class PostsController < ApplicationController
   end
 
   def edit
-    if @post.creator != current_user
-      flash[:error] = "You can't edit another person's post!"
-    end
   end
 
   def show
@@ -102,7 +99,7 @@ class PostsController < ApplicationController
     @post = Post.find_by(slug: params[:id])
   end
 
-  def require_creator
-    access_denied unless @post.creator == current_user
+  def require_creator_or_admin
+    access_denied unless logged_in? && (@post.creator == current_user || current_user.admin?)
   end
 end
