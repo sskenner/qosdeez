@@ -1,10 +1,18 @@
-<h3>Profile <strong>» </strong><%= @user.username %>'s Page</h3>
-<%= image_tag avatar_url(@user) %>
+<%= image_tag avatar_url(@user), { class: 'pull-right', style: 'border: solid 2px lightgrey'  } %>
+<h3>Profile <strong>» </strong><%= @user.username %></h3>
 <hr>
-<ul style='list-style: none' >
-  <% @user.posts.each do |post| %>
-    <li>
-      <div>
+<p><strong><%= @user.username %>'s Activity</strong></p>
+<ul class="nav nav-tabs pull-left">
+  <li class="active"><%= link_to "Posts (#{@user.posts.size})", user_path(@user) %></li>
+  <li><%= link_to "Comments (#{@user.comments.size})", user_path(@user, tab: :comments) %></li>
+</ul>
+<br/>
+<br/>
+<br/>
+<div id="user-body">
+  <ul style='list-style: none' >
+    <% @user.posts.each do |post| %>
+      <li>
         <div class='vote_box'>
           <%= link_to "<i class=\"icon-arrow-up\"></i>".html_safe, vote_post_path(post, vote: true), method: 'post', remote: true, class: 'btn btn-success nav-item' %>
           <div class='btn btn-mini nav-item'>
@@ -23,7 +31,7 @@
           |
           <small><%= link_to 'Edit', edit_post_path(post) %></small>
         </div>
-      </div>
-    </li>
-  <% end %>
-</ul>
+      </li>
+    <% end %>
+  </ul>
+</div>

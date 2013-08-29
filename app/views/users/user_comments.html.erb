@@ -1,0 +1,31 @@
+<%= image_tag avatar_url(@user), class: 'pull-right' %>
+<h3>Profile <strong>» </strong><%= @user.username %></h3>
+<hr>
+<p><strong><%= @user.username %>'s Activity</strong></p>
+<ul class="nav nav-tabs pull-left">
+  <li><%= link_to "Posts (#{@user.posts.size})", user_path(@user) %></li>
+  <li class="active"><%= link_to "Comments (#{@user.comments.size})", user_path(@user, tab: :comments) %></li>
+</ul>
+<br/>
+<br/>
+<br/>
+<div id="user-body">
+  <ul style="list-style: none; margin: 0px; padding: 0px" >
+    <% @user.comments.each do |comment| %>
+      <li>
+        <div class='post_box' style='padding: 0px'>
+          <div class='vote_box'>
+            <%= link_to "<i class=\"icon-arrow-up\"></i>".html_safe, vote_post_comment_path(comment.post, comment.id, vote: true), method: 'post', remote: true, class: 'btn btn-success nav-item' %>
+            <div class='btn btn-mini nav-item'>
+              <span id="comment_<%= comment.id %>_votes"><%= comment.total_votes %></span><br/>Vote Meter
+            </div>
+            <%= link_to "<i class=\"icon-arrow-down\"></i>".html_safe, vote_post_comment_path(comment.post, comment, vote: false), method: 'post', remote: true, class: 'btn btn-warning nav-item' %>
+          </div>
+          <div style='padding: 15px; text-align: left'>
+            <%= comment.body %><br/><small><em><%= link_to comment.creator.username, user_path(comment.creator) %> commented on <%= display_date(comment.created_at) %></em></small>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>

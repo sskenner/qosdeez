@@ -13,6 +13,7 @@
         </div>
         <div class='post_box'>
           <ul style="line-style: none">
+            <%= image_tag avatar_url(post.creator), { class: 'pull-right', style: 'border: solid 2px white'  } %>
             <% post.categories.each do |category| %>
               <span class='label'><%= link_to category.name, category_path(category) %></span>
             <% end %>

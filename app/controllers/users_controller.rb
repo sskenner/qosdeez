@@ -30,6 +30,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(slug: params[:id])
+    render :user_comments if params[:tab] == 'comments'
   end
 
   private
