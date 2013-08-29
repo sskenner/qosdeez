@@ -4,7 +4,13 @@
 	</li>
 	<% if logged_in? %>
 		<li>
-		 	<div class='btn btn-success'>Welcome, <%= current_user.username %>!</div>
+		 	<div class="btn-group">
+		 		<a class="btn dropdown-toggle btn-success" data-toggle="dropdown" href="#">Welcome, <%= current_user.username %>! <span class="caret"></span></a>
+		 		<ul class="dropdown-menu">
+		 			<li><%= link_to 'Edit Profile', edit_user_path(current_user) %></li>
+		 			<li><%= link_to 'Logout', logout_path %></li>
+		 		</ul>
+		 	</div>
 		</li>
 	<% end %>
 	<li>
@@ -15,12 +21,9 @@
 		<li>
 			<%= link_to 'New Post', new_post_path %>
 		</li>
-		<li>
-			<%= link_to 'New Category', new_category_path %>
-		</li>
-		<li>
-			<%= link_to 'Logout', logout_path %>
-		</li>
+		<% if current_user.admin? %>
+			<li><%= link_to 'New Category', new_category_path %></li>
+		<% end %>
 	<% else %>
 		<li>
 		 <%= link_to 'Login', login_path %>
