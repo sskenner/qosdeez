@@ -59,9 +59,11 @@ class PostsController < ApplicationController
           end
         end
       end
-      @post.categories.delete_all
-      categories.each do |category|
-        Label.create(:category_id => category, :post_id => @post.id)
+      if categories.size > 0
+        @post.categories.delete_all
+        categories.each do |category|
+          Label.create(:category_id => category, :post_id => @post.id)
+        end
       end
       flash[:notice] = "You've updated the post!"
       redirect_to posts_path
