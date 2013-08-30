@@ -11,6 +11,8 @@
   <%= f.label :categories %>
   <%= f.select :categories, Category.all.collect {|x| [x.name, x.id]}, {}, multiple: true %>
   <br/>
+  <p><em>* Hold down the <strong>command</strong> button (mac) to select more than one category.
+    <br/>(Not sure which button that is on a windows machine.  Maybe <strong>alt</strong> or <strong>control</strong>?)</em></p>
   <br/>
   <%= f.submit button_name %>
 <% end %>

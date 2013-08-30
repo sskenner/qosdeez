@@ -24,9 +24,9 @@ class PostsController < ApplicationController
 
 
     if @post.save
-      params[:post][:categories].each do |categories|
-        if categories != ""
-          categories = Label.create(:category_id => categories, :post_id => @post.id)
+      params[:post][:categories].each do |category_id|
+        if category_id != ""
+          Label.create(:category_id => category_id, :post_id => @post.id)
         end
       end
       flash[:notice] = "You created a new post!"
@@ -49,11 +49,19 @@ class PostsController < ApplicationController
   end
 
   def update
+    categories = []
+
     if @post.update(post_params)
-      params[:post][:categories].each do |categories|
-        if categories != ""
-          categories = Label.create(:category_id => categories, :post_id => @post.id)
+      params[:post][:categories].each do |category_id|
+        if category_id != ""
+          if
+            categories << category_id
+          end
         end
+      end
+      @post.categories.delete_all
+      categories.each do |category|
+        Label.create(:category_id => category, :post_id => @post.id)
       end
       flash[:notice] = "You've updated the post!"
       redirect_to posts_path
