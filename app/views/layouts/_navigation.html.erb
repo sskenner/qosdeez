@@ -13,10 +13,10 @@
 		 		</ul>
 		 	</div>
 		</li>
+		<li>
+			<%= link_to 'All Posts', posts_path %>
+		</li>
 	<% end %>
-	<li>
-		<%= link_to 'All Posts', posts_path %>
-	</li>
 
 	<% if logged_in? %>
 		<li>
@@ -25,15 +25,7 @@
 		<% if current_user.admin? %>
 			<li><%= link_to 'New Category', new_category_path %></li>
 		<% end %>
-	<% else %>
 		<li>
-		 <%= link_to 'Login', login_path %>
-	  </li>
-		<li>
-			<%= link_to 'Register', register_path %>
-		</li>
-	<% end %>
-	<li>
 		<div class="btn-group">
   		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">Categories <span class="caret"></span></a>
   		<ul class="dropdown-menu">
@@ -45,4 +37,12 @@
 		  </ul>
 		</div>
 	</li>
+	<% else %>
+		<li>
+		 <%= link_to 'Login', login_path %>
+	  </li>
+		<li>
+			<%= link_to 'Register', register_path %>
+		</li>
+	<% end %>
 </ul>

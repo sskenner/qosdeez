@@ -16,7 +16,8 @@
         <div class='vote_box'>
           <%= link_to "<i class=\"icon-arrow-up\"></i>".html_safe, vote_post_path(post, vote: true), method: 'post', remote: true, class: 'btn btn-success nav-item' %>
           <div class='btn btn-mini nav-item'>
-            <span id="post_<%= post.id %>_votes"><%= post.total_votes %></span><br/>Vote Meter
+            <span id="post_<%= post.id %>_votes"><%= post.total_votes %></span><br/>
+            BS?
           </div>
           <%= link_to "<i class=\"icon-arrow-down\"></i>".html_safe, vote_post_path(post, vote: false), method: 'post', remote: true, class: 'btn btn-warning nav-item' %>
         </div>
@@ -26,7 +27,12 @@
               <span class='label'><%= link_to category.name, category_path(category) %></span>
             <% end %>
           </ul>
-          <h4 stlye="text-align: right"><%= link_to post.title, post_path(post) %></h4>
+          <b>issue description: </b><%= link_to post.title, post_path(post) %>
+          <br>
+          <b>score: </b><small><%= link_to post.url, fix_url(post.url) %></small>
+          <br>
+          <b>reason for score: </b><small>"<%= post.description %>"</small>
+          <br>
           <small><%= link_to post.creator.username, user_path(post.creator) %> posted this on <%= display_date(post.created_at) %></small>
           |
           <small><%= link_to 'Edit', edit_post_path(post) %></small>

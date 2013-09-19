@@ -1,34 +1,37 @@
-<h3>All Posts</h3>
-<hr>
-<ul style='list-style: none' >
-  <% @posts.each do |post| %>
-    <li>
-      <div>
-        <div class='vote_box'>
-          <%= link_to "<i class=\"icon-arrow-up\"></i>".html_safe, vote_post_path(post, vote: true), method: 'post', remote: true, class: 'btn btn-success nav-item' %>
-          <div class='btn btn-mini nav-item'>
-            <span id="post_<%= post.id %>_votes"><%= post.total_votes %></span><br/>Vote Meter
+<% if logged_in? %>
+  <h3>All Posts</h3>
+  <hr>
+  <ul style='list-style: none' >
+    <% @posts.each do |post| %>
+      <li>
+        <div>
+          <div class='vote_box'>
+            <%= link_to "<i class=\"icon-arrow-up\"></i>".html_safe, vote_post_path(post, vote: true), method: 'post', remote: true, class: 'btn btn-success nav-item' %>
+            <div class='btn btn-mini nav-item'>
+              <span id="post_<%= post.id %>_votes"><%= post.total_votes %></span><br/>
+              BS?
+            </div>
+            <%= link_to "<i class=\"icon-arrow-down\"></i>".html_safe, vote_post_path(post, vote: false), method: 'post', remote: true, class: 'btn btn-warning nav-item' %>
           </div>
-          <%= link_to "<i class=\"icon-arrow-down\"></i>".html_safe, vote_post_path(post, vote: false), method: 'post', remote: true, class: 'btn btn-warning nav-item' %>
+          <div class='post_box'>
+            <ul style="line-style: none">
+              <%= image_tag avatar_url(post.creator), { class: 'pull-right', style: 'border: solid 2px white'  } %>
+              <% post.categories.each do |category| %>
+                <span class='label'><%= link_to category.name, category_path(category) %></span>
+              <% end %>
+            </ul>
+            <b>issue description: </b><%= link_to post.title, post_path(post) %>
+            <br>
+            <b>score: </b><small><%= link_to post.url, fix_url(post.url) %></small>
+            <br>
+            <b>reason for score: </b><small>"<%= post.description %>"</small>
+            <br>
+            <small><%= link_to post.creator.username, user_path(post.creator) %> posted this on <%= display_date(post.created_at) %></small>
+            |
+            <small><%= link_to 'Edit', edit_post_path(post) %></small>
+          </div>
         </div>
-        <div class='post_box'>
-          <ul style="line-style: none">
-            <%= image_tag avatar_url(post.creator), { class: 'pull-right', style: 'border: solid 2px white'  } %>
-            <% post.categories.each do |category| %>
-              <span class='label'><%= link_to category.name, category_path(category) %></span>
-            <% end %>
-          </ul>
-          <h6>issue description:</h6>
-          <h6 stlye="text-align: right"><%= link_to post.title, post_path(post) %></h6>
-          <h6>score: </h6><small><%= link_to post.url, fix_url(post.url) %></small>
-          </br>
-          <h6>reason for score: </h6><small>"<%= post.description %>"</small>
-          </br>
-          <small><%= link_to post.creator.username, user_path(post.creator) %> posted this on <%= display_date(post.created_at) %></small>
-          |
-          <small><%= link_to 'Edit', edit_post_path(post) %></small>
-        </div>
-      </div>
-    </li>
-  <% end %>
-</ul>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

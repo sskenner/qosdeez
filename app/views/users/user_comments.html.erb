@@ -17,12 +17,15 @@
           <div class='vote_box'>
             <%= link_to "<i class=\"icon-arrow-up\"></i>".html_safe, vote_post_comment_path(comment.post, comment.id, vote: true), method: 'post', remote: true, class: 'btn btn-success nav-item' %>
             <div class='btn btn-mini nav-item'>
-              <span id="comment_<%= comment.id %>_votes"><%= comment.total_votes %></span><br/>Vote Meter
+              <span id="comment_<%= comment.id %>_votes"><%= comment.total_votes %></span><br/>
+              BS?
             </div>
             <%= link_to "<i class=\"icon-arrow-down\"></i>".html_safe, vote_post_comment_path(comment.post, comment, vote: false), method: 'post', remote: true, class: 'btn btn-warning nav-item' %>
           </div>
           <div style='padding: 15px; text-align: left'>
-            <%= comment.body %><br/><small><em><%= link_to comment.creator.username, user_path(comment.creator) %> commented on <%= display_date(comment.created_at) %></em></small>
+            <small><%= comment.body %></small>
+            <br>
+            <small><em><%= link_to comment.creator.username, user_path(comment.creator) %> commented on <%= display_date(comment.created_at) %></em></small>
           </div>
         </div>
       </li>

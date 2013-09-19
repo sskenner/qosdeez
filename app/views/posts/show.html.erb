@@ -1,4 +1,6 @@
-<h5>issue description: </h5><h3 style="float: left; width: 100%"><%= @post.title %></h3>
+<b>issue description: </b>
+<br>
+<%= @post.title %>
 <hr>
 <div class='post_box'>
   <ul style="line-style: none">
@@ -6,8 +8,9 @@
       <span class='label'><%= link_to category.name, category_path(category) %> </span>
     <% end %>
   </ul>
-  <h5>score: </h5><h4><%= link_to @post.url, fix_url(@post.url) %></h4>
-  <h5>reason for score: </h5><p>"<%= @post.description %>"</p>
+  <b>score: </b><%= link_to @post.url, fix_url(@post.url) %>
+  <br>
+  <b>reason for score: </b> <small>"<%= @post.description %>"</small>
   <br/>
   <p>
     <small>
@@ -38,7 +41,7 @@
         <div class='vote_box'>
           <%= link_to "<i class=\"icon-arrow-up\"></i>".html_safe, vote_post_comment_path(comment.post, comment.id, vote: true), method: 'post', remote: true, class: 'btn btn-success nav-item' %>
           <div class='btn btn-mini nav-item'>
-            <span id="comment_<%= comment.id %>_votes"><%= comment.total_votes %></span><br/>Vote Meter
+            <span id="comment_<%= comment.id %>_votes"><%= comment.total_votes %></span><br/>BS?
           </div>
           <%= link_to "<i class=\"icon-arrow-down\"></i>".html_safe, vote_post_comment_path(comment.post, comment, vote: false), method: 'post', remote: true, class: 'btn btn-warning nav-item' %>
         </div>
