@@ -1,4 +1,4 @@
-<h3 style="float: left; width: 100%"><%= @post.title %></h3>
+<h5>issue description: </h5><h3 style="float: left; width: 100%"><%= @post.title %></h3>
 <hr>
 <div class='post_box'>
   <ul style="line-style: none">
@@ -6,9 +6,8 @@
       <span class='label'><%= link_to category.name, category_path(category) %> </span>
     <% end %>
   </ul>
-  <h4><%= link_to @post.url, fix_url(@post.url) %></h4>
-  <br/>
-  <p>"<%= @post.description %>"</p>
+  <h5>score: </h5><h4><%= link_to @post.url, fix_url(@post.url) %></h4>
+  <h5>reason for score: </h5><p>"<%= @post.description %>"</p>
   <br/>
   <p>
     <small>

@@ -18,7 +18,12 @@
               <span class='label'><%= link_to category.name, category_path(category) %></span>
             <% end %>
           </ul>
-          <h4 stlye="text-align: right"><%= link_to post.title, post_path(post) %></h4>
+          <h6>issue description:</h6>
+          <h6 stlye="text-align: right"><%= link_to post.title, post_path(post) %></h6>
+          <h6>score: </h6><small><%= link_to post.url, fix_url(post.url) %></small>
+          </br>
+          <h6>reason for score: </h6><small>"<%= post.description %>"</small>
+          </br>
           <small><%= link_to post.creator.username, user_path(post.creator) %> posted this on <%= display_date(post.created_at) %></small>
           |
           <small><%= link_to 'Edit', edit_post_path(post) %></small>
