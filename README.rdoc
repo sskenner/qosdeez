@@ -1,4 +1,4 @@
-This is a Reddit-like app qosdeez, built with Ruby 2 and Rails 4, with all features coded from scratch without relying on any external libraries or gems. Please contact me if you would like me to wake up the app and frwd the link as it is currently deployed to heroku.
+This is a Reddit-like app qosdeez, built with Ruby 2 and Rails 4, with all features coded from scratch without relying on any external libraries or gems. The app is currently sleeping on heroku. Please contact me if you would like me to wake it up and forward the link for review.
 
 
 == Features
