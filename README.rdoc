@@ -1,30 +1,43 @@
-== Getting Started
-
-1. Make sure you have rails version 4. Type "rails -v" to make sure.
-2. From this project directory, do "bundle install --without production"
-3. To start the server "rails server".
-4. Navigate your browser to localhost:3000.
+This is a Reddit-like app ipostit, built with Ruby 2 and Rails 4, with all features coded from scratch without relying on any external libraries or gems. Deployed to heroku here link:http://www.ipostit-sk.herokuapp.com.
 
 
-== Setting up with Git
+== Features
+<code>Create and edit posts</code> •  
+<code>Comment and vote on posts</code> •  
+<code>Authentication</code> •  
+<code>Tracks who created all comments, votes, and posts</code> •  
+<code>Organize posts by category</code> •  
+<code>View and edit user profiles</code> •  
+<code>Uses roles to allow admins to edit all posts</code> •  
+<code>Uses ajax to vote</code> •  
+<code>Slugs as URLs</code> •  
+<code>Display time based on user specified time zone</code> •  
+<code>Deployed to Heroku</code> •  
+<code>Uses gem to extract common logic</code> •  
+<code>2-factor authentication</code> •  
 
-1. Instantiate this directory as a git repository with "git init".
-2. Go to github.com, create a new repository, then follow instructions on how to add a remote repository that links to github.
-3. Remember, you have to "git add" changes to ready it for a commit, then "git commit" to commit those changes locally, then "git push origin master" to push it to the remote "origin" repository, which is the previously created github.com repository.
-
-== Deploying to Heroku
-
-1. Download the Heroku Toolbelt.
-2. Go to Heroku.com and register.
-3. Issue "heroku login" to authenticate, with the credentials from previous step. Make sure it's a git repository, by issuing "git init", and also "git add", "git commit" your files.
-4. Then "heroku create" to create this app on heroku. This command also adds a "heroku" remote repository that you can push to.
-5. To deploy, issue "git push heroku master".
-6. You may need to run migrations on heroku afterwards, with "heroku run rake db:migrate".
-7. Other helpful heroku commands:
-  - heroku logs
-  - heroku logs -t
-  - heroku rename
-  - heroku restart
-  - heroku run console
-  - heroku help
-
+== Topics
+<code>Relational databases</code> •  
+<code>Basic database associations: 1:M and M:M</code> •  
+<code>ActiveRecord</code> •  
+<code>Resourceful routing</code> •  
+<code>REST</code> •  
+<code>MVC - models, views and controllers</code> •  
+<code>Request/response processing</code> •  
+<code>Partials</code> •  
+<code>Helpers</code> •  
+<code>Filters</code> •  
+<code>Rails forms</code> •  
+<code>Validations</code> •  
+<code>Strong parameters</code> •  
+<code>Callbacks</code> •  
+<code>Authentication from scratch</code> •  
+<code>Time zones</code> •  
+<code>Simple roles</code> •  
+<code>Deployment</code> •  
+<code>Polymorphic associations</code> •  
+<code>Ajax, the Rails way</code> •  
+<code>Pretty URLs</code> •  
+<code>Building APIs</code> •  
+<code>Creating and publishing first rubygem</code> •  
+<code>Twilio integration</code>
